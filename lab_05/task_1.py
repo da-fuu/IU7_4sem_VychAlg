@@ -1,6 +1,7 @@
 import numpy as np
 from math import fabs
 
+
 def roots_legendre(n):
     if n < 1:
         return 
@@ -9,9 +10,9 @@ def roots_legendre(n):
         return np.array([0.0]), np.array([2.0])
 
     beta = [k / np.sqrt(4*k**2 - 1) for k in range(1, n)]
-    J = np.diag(beta, 1) + np.diag(beta, -1)
+    j = np.diag(beta, 1) + np.diag(beta, -1)
 
-    eigenvalues, eigenvectors = np.linalg.eigh(J)
+    eigenvalues, eigenvectors = np.linalg.eigh(j)
 
     nodes = eigenvalues
     weights = 2 * (eigenvectors[0, :])**2 
@@ -21,6 +22,7 @@ def roots_legendre(n):
     weights = weights[idx]
 
     return nodes, weights
+
 
 def integrate_trapezoid(f, a, b, n=100):
     h = (b - a) / n
@@ -52,10 +54,12 @@ def integrate_gauss(f, a, b, n=100):
 def func_k1(x):
     return abs(x)
 
+
 def func_k2(x):
     return x ** 2
 
-def task_1():   
+
+def task_1():
     # Аналитические решения для сравнения
     exact_k1 = 1.0
     exact_k2 = 2 / 3
@@ -65,18 +69,18 @@ def task_1():
 
     print("\nРезультаты для k=1 (функция |x|):")
     print(f"Точное значение: {exact_k1:.6f}")
-    print(
-        f"Метод трапеций: {integrate_trapezoid(func_k1, a, b, n):.6f}, ошибка: {fabs(integrate_trapezoid(func_k1, a, b, n) - exact_k1):.6f}")
-    print(
-        f"Метод Симпсона: {integrate_simpson(func_k1, a, b, n):.6f}, ошибка: {fabs(integrate_simpson(func_k1, a, b, n) - exact_k1):.6f}")
-    print(
-        f"Метод Гаусса: {integrate_gauss(func_k1, a, b, n):.6f}, ошибка: {fabs(integrate_gauss(func_k1, a, b, n) - exact_k1):.6f}")
+    f = integrate_trapezoid(func_k1, a, b, n)
+    print(f"Метод трапеций: {f:.6f}, ошибка: {fabs(f - exact_k1):.6f}")
+    f = integrate_simpson(func_k1, a, b, n)
+    print(f"Метод Симпсона: {f:.6f}, ошибка: {fabs(f - exact_k1):.6f}")
+    f = integrate_gauss(func_k1, a, b, n)
+    print(f"Метод Гаусса: {f:.6f}, ошибка: {fabs(f - exact_k1):.6f}")
 
     print("\nРезультаты для k=2 (функция x**2):")
     print(f"Точное значение: {exact_k2:.6f}")
-    print(
-        f"Метод трапеций: {integrate_trapezoid(func_k2, a, b, n):.6f}, ошибка: {fabs(integrate_trapezoid(func_k2, a, b, n) - exact_k2):.6f}")
-    print(
-        f"Метод Симпсона: {integrate_simpson(func_k2, a, b, n):.6f}, ошибка: {fabs(integrate_simpson(func_k2, a, b, n) - exact_k2):.6f}")
-    print(
-        f"Метод Гаусса: {integrate_gauss(func_k2, a, b, n):.6f}, ошибка: {fabs(integrate_gauss(func_k2, a, b, n) - exact_k2):.6f}\n")
+    f = integrate_trapezoid(func_k2, a, b, n)
+    print(f"Метод трапеций: {f:.6f}, ошибка: {fabs(f - exact_k2):.6f}")
+    f = integrate_simpson(func_k2, a, b, n)
+    print(f"Метод Симпсона: {f:.6f}, ошибка: {fabs(f - exact_k2):.6f}")
+    f = integrate_gauss(func_k2, a, b, n)
+    print(f"Метод Гаусса: {f:.6f}, ошибка: {fabs(f - exact_k2):.6f}\n")

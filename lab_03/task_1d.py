@@ -82,7 +82,6 @@ def plot_graphs(table, n, type_graph, type_dots):
         plt.plot(x_arr, y_arr, type_graph, label="{:s}\nn = {:d}".format(type_dots, i))
 
 
-
 def solve_task_1d(table):
     try:
         n = int(input("\nВведите степень аппроксимирующего полинома: "))

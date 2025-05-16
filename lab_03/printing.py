@@ -13,8 +13,8 @@ def print_table(table):
     print("  №    |     X     |     Y    |    W    ")
 
     for i in range(len(table)):
-        print(
-            "  {:-3d}  |   {:-5.2f}   |   {:-4.2f}   |   {:-5.2f}   ".format(i + 1, table[i][0], table[i][1], table[i][2]))
+        print("  {:-3d}  |   {:-5.2f}   |   {:-4.2f}   |   {:-5.2f}   "
+              .format(i + 1, table[i][0], table[i][1], table[i][2]))
 
 
 def print_table_2d(table):
@@ -22,7 +22,8 @@ def print_table_2d(table):
     print("  №    |     X     |     Y     |     Z     |    W    ")
 
     for i in range(len(table)):
-        print("  {:-3d}  |   {:-5.2f}   |   {:-5.2f}   |   {:-5.2f}   |   {:-5.2f}   ".format(i + 1, table[i][0], table[i][1], table[i][2], table[i][3]))
+        print("  {:-3d}  |   {:-5.2f}   |   {:-5.2f}   |   {:-5.2f}   |   {:-5.2f}   "
+              .format(i + 1, table[i][0], table[i][1], table[i][2], table[i][3]))
 
 
 def change_weight(table):
@@ -43,4 +44,3 @@ def change_weight(table):
         return
 
     table[index - 1][2] = weight
-

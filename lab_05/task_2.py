@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def read_data(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
@@ -94,4 +95,3 @@ def task_2():
 
     integral = double_integrate(x_values, y_values, z_matrix, phi, psi, a, b)
     print(f"Двойной интеграл: {integral}")
-    45

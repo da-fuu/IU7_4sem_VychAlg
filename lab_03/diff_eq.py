@@ -98,7 +98,7 @@ def solve_diff_eq():
     plt.plot(x, y_m2, label='m=2')
     y_m3 = u0(x) + C_m3[0] * u1(x) + C_m3[1] * u2(x) + C_m3[2] * u3(x)
     plt.plot(x, y_m3, label='m=3')
- 6 7
+
     plt.legend()
     plt.grid()
     plt.xlabel('x')
